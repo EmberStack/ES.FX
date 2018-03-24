@@ -1,5 +1,5 @@
 # ES.FX - Overview
-EmberStack Frameworks - Core Library - Exntesions and helper classes for .NET
+EmberStack Frameworks - Core Library - Extensions and helper classes for .NET
 
 ## Packages & Status
 EmberStack Frameworks contain multiple packages. For information about each package please follow the links
