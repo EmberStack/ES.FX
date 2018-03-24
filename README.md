@@ -7,4 +7,4 @@ EmberStack Frameworks contain multiple packages. For information about each pack
 ---
 Package  | Build status | NuGet 
 -------- | :------------ | :------------ 
-ES.FX | [![VSTS](https://sintari.visualstudio.com/_apis/public/build/definitions/34e057ec-f09f-4d30-92f4-5895eeaa3f74/9/badge)] |  [![NuGet](https://img.shields.io/nuget/v/ES.FX.svg)](https://www.nuget.org/packages/ES.FX)
+ES.FX | [![VSTS](https://sintari.visualstudio.com/_apis/public/build/definitions/34e057ec-f09f-4d30-92f4-5895eeaa3f74/9/badge)](https://sintari.visualstudio.com/ES.FX) |  [![NuGet](https://img.shields.io/nuget/v/ES.FX.svg)](https://www.nuget.org/packages/ES.FX)
