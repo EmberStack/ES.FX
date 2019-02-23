@@ -9,14 +9,14 @@ namespace ES.FX.Data.Common
     {
         protected T GetValueOrDefault<T>([CallerMemberName]string property = null)
         {
-            if (!ContainsKey(property)) return default(T);
+            if (!ContainsKey(property ?? throw new ArgumentNullException(nameof(property)))) return default(T);
             return (T)Convert.ChangeType(this[property]?.ToString(), typeof(T));
         }
 
 
         protected object SetValue(object value, [CallerMemberName]string property = null)
         {
-            this[property] = value;
+            this[property ?? throw new ArgumentNullException(nameof(property))] = value;
             return value;
         }
     }

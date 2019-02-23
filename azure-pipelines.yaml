@@ -1,0 +1,20 @@
+name: $(Build.Number.Major).$(Date:yy)$(DayOfYear).$(Rev:r)
+
+trigger:
+- master
+
+pool:
+  vmImage: 'Ubuntu-16.04'
+
+variables:
+  buildConfiguration: 'Release'
+  nupkg: 'ES.FX'
+
+steps:
+- script: dotnet build --configuration $(buildConfiguration) --verbosity normal /p:AssemblyVersion=$(Build.BuildNumber) /p:Version=$(Build.BuildNumber)
+  displayName: 'dotnet build $(buildConfiguration)'
+- task: PublishPipelineArtifact@0
+  displayName: 'Publish artifact nupkg $(nupkg).$(Build.BuildNumber).nupkg'
+  inputs:
+    artifactName: 'nupkg'
+    targetPath: '$(nupkg)/bin/$(buildConfiguration)/$(nupkg).$(Build.BuildNumber).nupkg'
