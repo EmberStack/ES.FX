@@ -7,4 +7,4 @@ EmberStack Frameworks contain multiple packages. For information about each pack
 ---
 Package  | Build status | NuGet 
 -------- | :------------ | :------------ 
-ES.FX | [![Build Status](https://dev.azure.com/emberstack/ES.FX-Public/_apis/build/status/ES.FX?branchName=master)](https://dev.azure.com/emberstack/ES.FX-Public/_build/latest?definitionId=2&branchName=master) |  [![NuGet](https://img.shields.io/nuget/v/ES.FX.svg)](https://www.nuget.org/packages/ES.FX)
+ES.FX | [![Build Status](https://dev.azure.com/emberstack/OpenSource/_apis/build/status/ES.FX?branchName=master)](https://dev.azure.com/emberstack/OpenSource/_build/latest?definitionId=3&branchName=master) |  [![NuGet](https://img.shields.io/nuget/v/ES.FX.svg)](https://www.nuget.org/packages/ES.FX)

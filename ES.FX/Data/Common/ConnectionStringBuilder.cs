@@ -9,7 +9,7 @@ namespace ES.FX.Data.Common
     {
         protected T GetValueOrDefault<T>([CallerMemberName]string property = null)
         {
-            if (!ContainsKey(property ?? throw new ArgumentNullException(nameof(property)))) return default(T);
+            if (!ContainsKey(property ?? throw new ArgumentNullException(nameof(property)))) return default;
             return (T)Convert.ChangeType(this[property]?.ToString(), typeof(T));
         }
 
