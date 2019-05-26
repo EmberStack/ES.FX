@@ -12,10 +12,16 @@ variables:
   buildConfiguration: 'Release'
 
 steps:
+- task: UseDotNet@2
+  displayName: 'Use dotnet sdk 3.x'
+  inputs:
+    version: 3.x
+    includePreviewVersions: true
+
 - script: dotnet build --configuration $(buildConfiguration) --verbosity normal
   displayName: 'dotnet build $(buildConfiguration)'
 
-- script: dotnet  pack --configuration $(buildConfiguration) --verbosity normal --no-build --output ../nupkg /p:AssemblyVersion=$(Build.BuildNumber) /p:Version=$(Build.BuildNumber)
+- script: dotnet  pack --configuration $(buildConfiguration) --verbosity normal --no-build --output nupkg /p:AssemblyVersion=$(Build.BuildNumber) /p:Version=$(Build.BuildNumber)
   displayName: 'dotnet pack $(buildConfiguration)'
 
 - task: PublishBuildArtifacts@1
