@@ -28,5 +28,16 @@ namespace ES.FX.Primitives
         {
             return source?.Substring(startIndex, Math.Min(source.Length, maxLength));
         }
+
+
+        public static string EmptyIfNull(this string value)
+        {
+            return value.IsNullOrEmpty() ? string.Empty : value;
+        }
+
+        public static string EmptyIfNullOrWhitespace(this string value)
+        {
+            return value.IsNullOrWhiteSpace() ? string.Empty : value;
+        }
     }
 }

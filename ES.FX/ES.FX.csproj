@@ -14,7 +14,7 @@
     <Company>EmberStack.com</Company>
     <Description>EmberStack Frameworks - Core Library - Extensions and helper classes for .NET</Description>
     <Copyright>Copyright EmberStack.com</Copyright>
-    <LangVersion>8.0</LangVersion>
+    <LangVersion>default</LangVersion>
   </PropertyGroup>
 
 </Project>
