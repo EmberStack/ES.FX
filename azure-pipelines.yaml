@@ -1,31 +1,19 @@
-name: $(Build.Number.Major).$(Date:yy)$(DayOfYear).$(Rev:r)
+name: $(version).$(Rev:r)
+
+variables:
+  version: 3.1
+  buildConfiguration: "Release"
+  DOCKER_CLI_EXPERIMENTAL: "enabled"
 
 trigger:
   branches:
     include:
-      - '*'
-      
-pool:
-  vmImage: 'Ubuntu-16.04'
+      - "*"
+  paths:
+    include:
+      - src/*
+      - .devops/*
+      - azure-pipelines.yaml
 
-variables:
-  buildConfiguration: 'Release'
-
-steps:
-- task: UseDotNet@2
-  displayName: 'Use dotnet sdk 3.x'
-  inputs:
-    version: 3.x
-    includePreviewVersions: true
-
-- script: dotnet build --configuration $(buildConfiguration) --verbosity normal
-  displayName: 'dotnet build $(buildConfiguration)'
-
-- script: dotnet  pack --configuration $(buildConfiguration) --verbosity normal --no-build --output nupkg /p:AssemblyVersion=$(Build.BuildNumber) /p:Version=$(Build.BuildNumber)
-  displayName: 'dotnet pack $(buildConfiguration)'
-
-- task: PublishBuildArtifacts@1
-  displayName: 'Publish artifact nupkg'
-  inputs:
-    PathtoPublish: 'nupkg'
-    ArtifactName: 'nupkg/'
+stages:
+  - template: .devops/pipelines/stage.ci.yaml

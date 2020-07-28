@@ -1,0 +1,20 @@
+﻿<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <TargetFramework>netstandard2.0</TargetFramework>
+    <GeneratePackageOnBuild>false</GeneratePackageOnBuild>
+    <PackageRequireLicenseAcceptance>true</PackageRequireLicenseAcceptance>
+    <Authors>emberstack.com</Authors>
+    <PackageLicenseUrl>https://github.com/emberstack/ES.FX/blob/master/LICENSE</PackageLicenseUrl>
+    <PackageTags>ES Frameworks ES.FX emberstack .Net DotNet</PackageTags>
+    <PackageIconUrl>https://raw.githubusercontent.com/emberstack/CDN/master/Projects/ES.FX/es.fx.1.0.0.0.png</PackageIconUrl>
+    <PackageProjectUrl>https://github.com/emberstack/ES.FX</PackageProjectUrl>
+    <RepositoryUrl>https://github.com/emberstack/ES.FX</RepositoryUrl>
+    <RepositoryType>Git</RepositoryType>
+    <Company>emberstack.com</Company>
+    <Description>Emberstack Frameworks - Core Library - Extensions and helper classes for .NET</Description>
+    <Copyright>Copyright emberstack.com</Copyright>
+    <LangVersion>latest</LangVersion>
+  </PropertyGroup>
+
+</Project>

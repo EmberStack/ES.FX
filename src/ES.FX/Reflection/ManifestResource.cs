@@ -48,10 +48,8 @@ namespace ES.FX.Reflection
         /// </summary>
         public string ReadText()
         {
-            using (var reader = GetStreamReader())
-            {
-                return reader.ReadToEnd();
-            }
+            using var reader = GetStreamReader();
+            return reader.ReadToEnd();
         }
 
         /// <summary>
@@ -59,10 +57,8 @@ namespace ES.FX.Reflection
         /// </summary>
         public Task<string> ReadTextAsync()
         {
-            using (var reader = GetStreamReader())
-            {
-                return reader.ReadToEndAsync();
-            }
+            using var reader = GetStreamReader();
+            return reader.ReadToEndAsync();
         }
 
         /// <summary>
