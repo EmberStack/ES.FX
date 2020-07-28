@@ -1,6 +1,8 @@
 ﻿using System.IO;
 using System.Reflection;
+using System.Threading;
 using System.Threading.Tasks;
+using ES.FX.IO;
 
 namespace ES.FX.Reflection
 {
@@ -44,6 +46,26 @@ namespace ES.FX.Reflection
 
 
         /// <summary>
+        ///     Reads all bytes for the manifest resource
+        /// </summary>
+        public byte[] ReadAllBytes()
+        {
+            using var stream = GetStream();
+            return stream.ToByteArray();
+        }
+
+
+        /// <summary>
+        ///     Reads all bytes for the manifest resource
+        /// </summary>
+        public Task<byte[]> ReadAllBytesAsync(CancellationToken cancellation = default)
+        {
+            using var stream = GetStream();
+            return stream.ToByteArrayAsync(cancellation);
+        }
+
+
+        /// <summary>
         ///     Returns manifest resource content as text
         /// </summary>
         public string ReadText()
@@ -51,6 +73,7 @@ namespace ES.FX.Reflection
             using var reader = GetStreamReader();
             return reader.ReadToEnd();
         }
+
 
         /// <summary>
         ///     Returns manifest resource content as text
@@ -60,6 +83,7 @@ namespace ES.FX.Reflection
             using var reader = GetStreamReader();
             return reader.ReadToEndAsync();
         }
+
 
         /// <summary>
         ///     Returns a <see cref="StreamReader"></see> initialized with the manifest resource content <see cref="Stream" />
