@@ -28,7 +28,7 @@ stages:
               command: push
               packagesToPush: "$(Pipeline.Workspace)/nuget/**/*.nupkg;!$(Pipeline.Workspace)/nuget/**/*.symbols.nupkg"
               nuGetFeedType: external
-              publishFeedCredentials: NuGet
+              publishFeedCredentials: "nuget.org-emberstack"
 
           - task: GitHubRelease@1
             displayName: "GitHub - Create release"
