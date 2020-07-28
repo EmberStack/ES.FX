@@ -1,17 +1,9 @@
 ﻿
 Microsoft Visual Studio Solution File, Format Version 12.00
-# Visual Studio 15
-VisualStudioVersion = 15.0.27428.2005
+# Visual Studio Version 16
+VisualStudioVersion = 16.0.30320.27
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "ES.FX", "ES.FX\ES.FX.csproj", "{342E00CF-5B2E-4ED7-AF13-B46193CE3CA8}"
-EndProject
-Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Files", "Files", "{9FD556E5-0C51-4B7A-80A2-FC09B9F5E1D5}"
-	ProjectSection(SolutionItems) = preProject
-		.gitignore = .gitignore
-		azure-pipelines.yaml = azure-pipelines.yaml
-		LICENSE = LICENSE
-		README.md = README.md
-	EndProjectSection
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution

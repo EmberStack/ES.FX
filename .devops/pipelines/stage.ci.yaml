@@ -1,0 +1,43 @@
+stages:
+  - stage: ci
+    displayName: "CI"
+    jobs:
+      - job: build
+        displayName: "Build and Pack"
+        pool:
+          vmImage: ubuntu-latest
+        steps:
+          - script: |
+              mkdir -p artifacts/helm
+              mkdir -p artifacts/kubectl
+              mkdir -p artifacts/nuget
+            workingDirectory: "$(Build.ArtifactStagingDirectory)"
+            displayName: "Create Artifacts directories"
+
+
+          - task: UseDotNet@2
+            displayName: 'dotnet install'
+            inputs:
+              version: 3.1.x
+              includePreviewVersions: false
+
+          - task: DotNetCoreCLI@2
+            displayName: 'dotnet build'
+            inputs:
+              arguments: '--configuration $(buildConfiguration) --verbosity normal'
+              workingDirectory: 'src'
+
+          - task: DotNetCoreCLI@2
+            displayName: 'dotnet pack'
+            inputs:
+              command: pack
+              packagesToPack: 'src/**/*.csproj'
+              configuration: '$(buildConfiguration)'
+              packDirectory: '$(Build.ArtifactStagingDirectory)/artifacts/nuget'
+              nobuild: true
+              versioningScheme: byBuildNumber
+
+
+          - publish: "$(Build.ArtifactStagingDirectory)/artifacts/nuget"
+            artifact: "nuget"
+            displayName: "Publish nuget artifact"

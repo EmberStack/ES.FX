@@ -1,0 +1,43 @@
+stages:
+  - stage: cd
+    displayName: "CD"
+    dependsOn: "ci"
+    condition: and(succeeded(), in(variables['Build.Reason'], 'Manual', 'IndividualCI', 'BatchedCI'), in(variables['Build.SourceBranchName'], 'master'))
+    jobs:
+      - job: release
+        displayName: "Release"
+        pool:
+          vmImage: ubuntu-latest
+        variables:
+          - group: "OpenSource.GitHub"
+        steps:
+          - checkout: none
+          - download: current
+            artifact: "nuget"
+            displayName: "Download nuget artifact"
+
+          - task: NuGetToolInstaller@1
+            displayName: "NuGet install"
+            inputs:
+              versionSpec: ">=5.6"
+              checkLatest: true
+
+          - task: NuGetCommand@2
+            displayName: "NuGet push"
+            inputs:
+              command: push
+              packagesToPush: "$(Pipeline.Workspace)/nuget/**/*.nupkg;!$(Pipeline.Workspace)/nuget/**/*.symbols.nupkg"
+              nuGetFeedType: external
+              publishFeedCredentials: NuGet
+
+          - task: GitHubRelease@1
+            displayName: "GitHub - Create release"
+            inputs:
+              gitHubConnection: GitHub
+              repositoryName: $(Build.Repository.Name)
+              tagSource: userSpecifiedTag
+              tag: "v$(Build.BuildNumber)"
+              title: "Release v$(Build.BuildNumber)"
+              releaseNotesSource: inline
+              releaseNotes: "The release process is automated."
+              assets: "$(Pipeline.Workspace)/nuget/**/*.nupkg"
