@@ -17,3 +17,4 @@ trigger:
 
 stages:
   - template: .devops/pipelines/stage.ci.yaml
+  - template: .devops/pipelines/stage.cd.yaml
